@@ -1,0 +1,14 @@
+{
+  "builds": [
+    {
+      "src": "deepseek_proxy_api.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "deepseek_proxy_api.py"
+    }
+  ]
+}
