@@ -1,98 +1,73 @@
-# DeepSeek API Proxy
+DeepSeek API Proxy
+RapidAPI
+Vercel
 
-A lightweight proxy service that provides OpenAI‑compatible API endpoints for DeepSeek models, with built‑in usage tracking and cost calculation.
+A lightweight proxy service that provides OpenAI-compatible API endpoints for DeepSeek models, with built-in usage tracking and cost calculation.
 
-## Features
+70% cheaper than GPT-4o, same response quality, zero code changes.
 
-- **OpenAI‑compatible** – Use the same request format as OpenAI's `/v1/chat/completions`
-- **Cost‑aware** – Automatically calculates USD cost for each request
-- **Simple authentication** – Client‑side API key via `x-api-key` header
-- **CORS enabled** – Ready for frontend integration
+Why Use This?
+Compared to GPT-4o	DeepSeek V3 (via this proxy)
+Input cost	$0.5/million tokens
+Output cost	$1.0/million tokens
+API format	OpenAI-compatible
+Code changes needed	None
+Quick Start
+Endpoint
+POST https://deepseek-proxy-psi.vercel.app/v1/chat/completions
+Authentication
+Pass your RapidAPI key in the header:
 
-## Deployment to Vercel
-
-1. **Install Vercel CLI** (optional):
-   ```bash
-   npm i -g vercel
-   ```
-
-2. **Deploy**:
-   ```bash
-   vercel
-   ```
-   Follow the prompts, or use the Vercel web dashboard.
-
-3. **Set environment variable**:
-   In your Vercel project settings → Environment Variables, add:
-   ```
-   DEEPSEEK_API_KEY = sk-your-deepseek-api-key-here
-   ```
-
-4. **Your API endpoint will be**:
-   ```
-   https://your-project.vercel.app/v1/chat/completions
-   ```
-
-## Local Development
-
-```bash
-# 1. Set your DeepSeek API key
-set DEEPSEEK_API_KEY=sk-your-key-here
-
-# 2. Install dependencies
-pip install -r requirements.txt
-
-# 3. Run the server
-python -m uvicorn deepseek_proxy_api:app --reload --port 8000
-```
-
-## API Usage
-
-### Request
-```bash
-curl -X POST https://your-api.vercel.app/v1/chat/completions \
+x-rapidapi-key: YOUR_RAPIDAPI_KEY
+cURL Example
+bash
+复制
+curl -X POST "https://deepseek-proxy-psi.vercel.app/v1/chat/completions" \
   -H "Content-Type: application/json" \
-  -H "x-api-key: your-client-key" \
+  -H "x-rapidapi-key: YOUR_KEY" \
   -d '{
     "model": "deepseek-chat",
-    "messages": [{"role": "user", "content": "Hello!"}],
-    "max_tokens": 100,
-    "temperature": 0.7
+    "messages": [{"role": "user", "content": "Hello, how are you?"}]
   }'
-```
+Python Example
+python
+复制
+import requests
 
-### Response
-```json
-{
-  "id": "chatcmpl-...",
-  "object": "chat.completion",
-  "created": 1234567890,
-  "model": "deepseek-chat",
-  "choices": [...],
-  "usage": {
-    "prompt_tokens": 10,
-    "completion_tokens": 50,
-    "total_tokens": 60,
-    "cost_usd": 0.000055
-  }
+url = "https://deepseek-proxy-psi.vercel.app/v1/chat/completions"
+headers = {
+    "Content-Type": "application/json",
+    "x-rapidapi-key": "YOUR_RAPIDAPI_KEY"
 }
-```
+data = {
+    "model": "deepseek-chat",
+    "messages": [{"role": "user", "content": "Explain quantum computing in 3 sentences."}]
+}
 
-## Pricing (Example)
+response = requests.post(url, json=data, headers=headers)
+print(response.json())
+Features
+OpenAI-compatible — Drop-in replacement for /v1/chat/completions
+70% cheaper than GPT-4o with comparable quality
+Built-in cost tracking — Every response includes usage.cost_usd
+CORS enabled — Ready for frontend/browser integration
+Serverless — Deployed on Vercel, scales automatically
+Pricing (on RapidAPI)
+Plan	Price	Requests/Month
+BASIC (Free)	$0	3,000
+PRO	$9.99	10,000
+Get your API key here →
 
-| Item               | Your Price | Your Cost | Margin |
-|--------------------|------------|-----------|--------|
-| Input tokens       | $0.5 / 1M  | ~ $0.2    | 150%   |
-| Output tokens      | $1.0 / 1M  | ~ $0.2    | 400%   |
-
-## RapidAPI Listing
-
-Once deployed, list your API on [RapidAPI](https://rapidapi.com/hub) or [OpenRouter](https://openrouter.ai/):
-
-- **Category**: AI & Machine Learning → Text Generation
-- **Pricing**: Per‑token (input/output separate)
-- **Documentation**: Use the interactive Swagger UI at `/docs`
-
-## License
-
+Self-Host
+Deploy to Vercel
+Fork this repo
+Import to Vercel
+Add environment variable: DEEPSEEK_API_KEY = your DeepSeek API key
+Deploy
+Local Development
+bash
+复制
+pip install -r requirements.txt
+python -m uvicorn deepseek_proxy_api:app --reload --port 8000
+License
 MIT
