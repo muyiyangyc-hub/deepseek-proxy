@@ -1,27 +1,42 @@
-DeepSeek API Proxy
-RapidAPI
-Vercel
+# DeepSeek API Proxy
 
-A lightweight proxy service that provides OpenAI-compatible API endpoints for DeepSeek models, with built-in usage tracking and cost calculation.
+[![RapidAPI](https://img.shields.io/badge/RapidAPI-DeepSeek%20API%20Proxy-blue?logo=rapidapi)](https://rapidapi.com/muyiyangyc-hub/api/deepseek-api-proxy)
+[![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?logo=vercel)](https://deepseek-proxy-psi.vercel.app/v1/chat/completions)
 
-70% cheaper than GPT-4o, same response quality, zero code changes.
+A lightweight proxy service that provides **OpenAI-compatible** API endpoints for DeepSeek models, with built-in usage tracking and cost calculation.
 
-Why Use This?
-Compared to GPT-4o	DeepSeek V3 (via this proxy)
-Input cost	$0.5/million tokens
-Output cost	$1.0/million tokens
-API format	OpenAI-compatible
-Code changes needed	None
-Quick Start
-Endpoint
+> **70% cheaper** than GPT-4o, same response quality, zero code changes.
+
+---
+
+## Why Use This?
+
+| Compared to GPT-4o | DeepSeek V3 (via this proxy) |
+|---------------------|------------------------------|
+| Input cost | $0.5/million tokens |
+| Output cost | $1.0/million tokens |
+| API format | OpenAI-compatible |
+| Code changes needed | **None** |
+
+---
+
+## Quick Start
+
+### Endpoint
+
 POST https://deepseek-proxy-psi.vercel.app/v1/chat/completions
-Authentication
+
+
+### Authentication
+
 Pass your RapidAPI key in the header:
 
 x-rapidapi-key: YOUR_RAPIDAPI_KEY
-cURL Example
-bash
-复制
+
+
+### cURL Example
+
+```bash
 curl -X POST "https://deepseek-proxy-psi.vercel.app/v1/chat/completions" \
   -H "Content-Type: application/json" \
   -H "x-rapidapi-key: YOUR_KEY" \
