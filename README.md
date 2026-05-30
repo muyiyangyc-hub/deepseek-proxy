@@ -5,7 +5,7 @@
 
 A lightweight proxy service that provides **OpenAI-compatible** API endpoints for DeepSeek models, with built-in usage tracking and cost calculation.
 
-> **70% cheaper** than GPT-4o, same response quality, zero code changes.
+> **90%+ cheaper** than GPT-4o. Same quality, pay only for what you use.
 
 ---
 
@@ -13,8 +13,9 @@ A lightweight proxy service that provides **OpenAI-compatible** API endpoints fo
 
 | Compared to GPT-4o | DeepSeek V3 (via this proxy) |
 |---------------------|------------------------------|
-| Input cost | $0.5/million tokens |
-| Output cost | $1.0/million tokens |
+| Price per request | **$0.004** |
+| Input cost | $0.27/million tokens |
+| Output cost | $1.10/million tokens |
 | API format | OpenAI-compatible |
 | Code changes needed | **None** |
 
@@ -63,14 +64,15 @@ response = requests.post(url, json=data, headers=headers)
 print(response.json())
 Features
 OpenAI-compatible — Drop-in replacement for /v1/chat/completions
-70% cheaper than GPT-4o with comparable quality
+90%+ cheaper than GPT-4o with comparable quality
+Pay per use — No monthly commitment, billed per request
 Built-in cost tracking — Every response includes usage.cost_usd
 CORS enabled — Ready for frontend/browser integration
 Serverless — Deployed on Vercel, scales automatically
 Pricing (on RapidAPI)
-Plan	Price	Requests/Month
-BASIC (Free)	$0	3,000
-PRO	$9.99	10,000
+Plan	Price	Details
+BASIC (Free)	$0/month	100 requests/month — perfect for testing
+PRO	$0.004/request	Pay per use, unlimited requests
 Get your API key here →
 
 Self-Host
